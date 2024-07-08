@@ -12,11 +12,11 @@ const SplashScreen = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShow(false);
-    }, 1000);
+    }, 1250);
 
     const navigationTimer = setTimeout(() => {
       navigate('/login');
-    }, 1500);
+    }, 1800);
 
     return () => {
       clearTimeout(timer);
@@ -34,8 +34,8 @@ const SplashScreen = () => {
       <div className="App">
         <div className='container'>
           <div className='logo'>
-            <img src={logo} style={{ width: '160px' }} alt='logo' />
-            <h1 style={{ color: 'white' }}>FNControl</h1>
+            <img src={logo} style={{ width: '150px', alignItems: 'center' }} alt='logo' />
+            <h1 style={{ color: 'white', fontSize:'50px', textAlign:'center', marginTop:'5px' }}>FNControl</h1>
           </div>
         </div>
       </div>
