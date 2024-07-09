@@ -17,7 +17,14 @@ body {
   align-items: center;
   margin-top: 20vh;
   text-align: center;
-  width: 330px;
+}
+
+.btnConfirm{
+  background-color: #00D09E;
+  border: none;
+  border-radius: 30px;
+  width: 170px;
+  height: 40px;
 }
 
 .btnlogin {
@@ -31,8 +38,17 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
+  text-align: center;
+  background-color: #093030;
+  border-radius: 30px;
+  }
+
+  .auth-options {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 
 .auth-links {
   display: flex;
@@ -40,6 +56,10 @@ body {
   align-items: center;
   margin-top: 20px;
   gap: 15px;
+}
+
+.btnAlt{
+  width: 160px;
 }
 
 .auth-links span {
@@ -50,19 +70,42 @@ body {
 
 .inputField {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 15px;
-  width: 300px;
+  width: 400px;
+  flex-direction: column;
+  align-items: baseline;
+  position: relative;
+}
+.inputs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .inputField input {
   border: none;
   outline: none;
   flex-grow: 1;
+  width: 360px;
+  height: 30px;
+  border-radius: 16px;
+  padding-left: 30px;
+  background-color: #DFF7E2;
+  transition: all 0.3s;
+}
+
+.inputField svg {
+  top: 24px;
+  bottom: 0;
+  margin: auto 0;
+  right: 30px;
+  position: absolute;
+  color: #0E3E3E;
+  cursor: pointer;
 }
 
 .auth-header {
@@ -79,10 +122,15 @@ body {
   color: white;
   cursor: pointer;
   font-size: 16px;
+  display: flex;
+
 }
 
 .form-title {
+  display: flex;
+  justify-content: center;
   color: white;
   font-size: 24px;
   margin: 0;
+  align-items: center;  
 }

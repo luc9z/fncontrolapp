@@ -1,13 +1,16 @@
-// src/contexts/AuthContext.js
 import { useState, createContext, useEffect } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../services/firebaseConnection';
 import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from 'firebase/auth';
+
 
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
   const [user, setUser] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
 
@@ -76,6 +79,50 @@ function AuthProvider({ children }) {
     }
   };
 
+  const signInWithGoogle = async () => {
+    setLoadingAuth(true);
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      const data = {
+        uid: user.uid,
+        firstName: user.displayName.split(' ')[0],
+        lastName: user.displayName.split(' ')[1],
+        email: user.email,
+      };
+      setUser(data);
+      localStorage.setItem('fncontrolapp', JSON.stringify(data));
+      setLoadingAuth(false);
+      navigate('/home');
+    } catch (error) {
+      setLoadingAuth(false);
+      console.error(error);
+    }
+  };
+
+  const signInWithFacebook = async () => {
+    setLoadingAuth(true);
+    try {
+      const result = await signInWithPopup(auth, facebookProvider);
+      const user = result.user;
+      const data = {
+        uid: user.uid,
+        firstName: user.displayName.split(' ')[0],
+        lastName: user.displayName.split(' ')[1],
+        email: user.email,
+      };
+      setUser(data);
+      localStorage.setItem('fncontrolapp', JSON.stringify(data));
+      setLoadingAuth(false);
+      navigate('/home');
+    } catch (error) {
+      setLoadingAuth(false);
+      console.error(error);
+    }
+  };
+
+
+
   const logout = async () => {
     await signOut(auth);
     localStorage.removeItem('fncontrolapp');
@@ -84,7 +131,7 @@ function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ signed: !!user, user, signIn, signUp, logout, loadingAuth }}>
+    <AuthContext.Provider value={{ signed: !!user, user, signIn, signUp, logout, loadingAuth, signInWithGoogle, signInWithFacebook }}>
       {children}
     </AuthContext.Provider>
   );
