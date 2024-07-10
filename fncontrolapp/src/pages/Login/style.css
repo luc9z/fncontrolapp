@@ -23,8 +23,11 @@ body {
   background-color: #00D09E;
   border: none;
   border-radius: 30px;
-  width: 170px;
   height: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #093030;
 }
 
 .btnlogin {
@@ -41,6 +44,7 @@ body {
   text-align: center;
   background-color: #093030;
   border-radius: 30px;
+  height: 100%;
   }
 
   .auth-options {
@@ -59,7 +63,9 @@ body {
 }
 
 .btnAlt{
-  width: 160px;
+  width: 235px;
+  display: flex;
+  flex-direction: column;
 }
 
 .auth-links span {
@@ -83,7 +89,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  margin-top: 80px;
 }
 
 .inputField input {
