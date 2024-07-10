@@ -122,7 +122,7 @@ const Login = () => {
             {formType === 'login' && (
               <form className="inputs" onSubmit={handleLogin}>
                 <div className="inputField">
-                <label>Username ou Email</label>
+                <label style={{color:'white', marginbottom:'8px'}}>Username ou Email</label>
                   <input
                     type="email"
                     placeholder="teste@teste.com" required
@@ -131,7 +131,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="inputField">
-                  <label>Senha</label>
+                  <label style={{color:'white', marginbottom:'8px'}}>Senha</label>
                   <input
                     type={showPassword ? "text" : "password"}
                     className="body-medium text-primary"
@@ -151,16 +151,21 @@ const Login = () => {
                 </div>
                 <div className="btnAlt">
                 <button className="btnConfirm" type="submit">{loadingAuth ? 'Carregando...' : 'Login'}</button>
-                <span onClick={() => handlePage('forgot-password')}>Esqueci minha senha</span>
-                <span onClick={() => handlePage('fingerprint')}>Use fingerprint to access</span>
-                <p>Ou se registre com:</p>
-                <button onClick={signInWithFacebook}>
-                  <img src={facebook} alt="Facebook login" style={{ width: '30px', marginRight: '10px' }} />
+                <span style={{fontWeight:'bold', fontSize:'14px', color:'white', marginTop:'20px'}} onClick={() => handlePage('forgot-password')}>Esqueceu sua senha?</span>
+                <span style={{ fontWeight:'bold', fontSize: '14px', color: 'white', marginTop:'20px' }} onClick={() => handlePage('fingerprint')}>
+                  Use a <span style={{ color: '#00D09E'}}>digital</span> para acessar.
+                </span>
+
+                  <div>
+                  <p style={{fontSize:'14px', color: 'white'}}>Ou se registre com:</p>
+                <button onClick={signInWithFacebook} style={{backgroundColor:'transparent', border:'none'}}>
+                  <img src={facebook} alt="Facebook login" style={{ width: '30px' }} />
                 </button>
-                <button onClick={signInWithGoogle}>
+                <button onClick={signInWithGoogle} style={{backgroundColor:'transparent', border:'none'}}>
                   <img src={google} alt="Google login" style={{ width: '30px' }} />
                 </button>
-                <p>Não tem uma conta?<a href='#'> Registre-se</a></p>
+                  </div>
+                <p style={{fontSize:'14px', color: 'white'}}>Não tem uma conta?<a style={{textDecoration:'none', color:'#00D09E'}} href='#'> Registre-se</a></p>
                 </div>
               </form>
             )}
